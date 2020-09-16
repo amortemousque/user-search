@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import useUsers from "./hooks/userUsers";
+import useDebounce from "./hooks/useDebounce";
+import useUsers from "./hooks/useUsers";
 import UserItem from "./UserItem";
 import "./UserList.css";
 
 const UserList = () => {
   const [term, setTerm] = useState<string>("");
-  const users = useUsers(term);
+  const debounceTerm = useDebounce(term, 300);
+  const users = useUsers(debounceTerm);
 
   return (
     <>
