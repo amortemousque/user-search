@@ -1,21 +1,25 @@
 import React from "react";
+import UserItem from "./UserItem";
 import "./UserList.css";
 
 const UserList = () => {
   const users = [
     {
+      id: 1,
       login: "test",
       html_url: "https://github.com/amortemousque",
       avatar_url:
         "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/logo_Google_FullColor_3x_830x271px.max-2800x2800.png",
     },
     {
+      id: 2,
       login: "test",
       html_url: "https://github.com/amortemousque",
       avatar_url:
         "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/logo_Google_FullColor_3x_830x271px.max-2800x2800.png",
     },
     {
+      id: 3,
       login: "test",
       html_url: "https://github.com/amortemousque",
       avatar_url:
@@ -29,19 +33,7 @@ const UserList = () => {
       </div>
       <section className="user-list">
         {users.map((u) => (
-          <article className="user-item">
-            <img
-              className="user-item__img"
-              alt="avatar"
-              src={u.avatar_url}
-              loading="lazy"
-              height="200"
-            />
-            <div className="user-item__body">
-              <h1 className="user-item__title">{u.login}</h1>
-              <a href={u.html_url}>Github</a>
-            </div>
-          </article>
+          <UserItem key={u.id} user={u}></UserItem>
         ))}
       </section>
     </div>
