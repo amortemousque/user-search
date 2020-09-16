@@ -7,8 +7,10 @@ import "./UserList.css";
 const UserList = () => {
   const [term, setTerm] = useState<string>("");
   const debounceTerm = useDebounce(term, 300);
-  const [users, loading, error] = useUsers(debounceTerm);
-
+  const [users, loading, error, rateLimitRemaining, rateLimitReset] = useUsers(debounceTerm);
+  const renderWaitingTime = () =>
+    rateLimitReset ? Math.round((rateLimitReset * 1000 - Date.now()) / 1000) : "";
+    
   return (
     <>
       <input
@@ -25,7 +27,14 @@ const UserList = () => {
           ))}
         </section>
       )}
-      {!loading && error && <p>{error}</p>}
+      {!loading && error && (
+        <p>
+          {error}
+          {rateLimitRemaining === 0 && (
+            <p>wait for {renderWaitingTime()} seconds before a new search</p>
+          )}
+        </p>
+      )}
       {loading && <p>Loading...</p>}
     </>
   );
