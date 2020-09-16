@@ -4,3 +4,14 @@
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 24px;
 }
+
+.user-search {
+    max-width: 400px;
+    margin: 0 auto 16px auto;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ededed;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 16px;
+}

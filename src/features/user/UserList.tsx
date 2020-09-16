@@ -27,16 +27,14 @@ const UserList = () => {
     },
   ];
   return (
-    <div>
-      <div>
-        <input name="term" />
-      </div>
+    <>
+      <input name="term" className="user-search" />
       <section className="user-list">
         {users.map((u) => (
           <UserItem key={u.id} user={u}></UserItem>
         ))}
       </section>
-    </div>
+    </>
   );
 };
 

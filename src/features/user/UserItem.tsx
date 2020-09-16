@@ -1,4 +1,5 @@
 import React from "react";
+import './UserItem.css';
 
 interface User {
   id: number;
