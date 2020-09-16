@@ -1,10 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import UserList from "./features/user/UserList";
 
 function App() {
   return (
-   <p>Hello world</p>
+    <main className="app">
+      <UserList></UserList>
+    </main>
   );
 }
 
