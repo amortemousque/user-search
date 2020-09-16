@@ -1,12 +1,6 @@
 import React from "react";
+import { User } from "./models";
 import './UserItem.css';
-
-interface User {
-  id: number;
-  login: string;
-  avatar_url: string;
-  html_url: string;
-}
 
 type UserItemProps = {
   user: User;
