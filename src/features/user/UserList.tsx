@@ -7,8 +7,10 @@ import "./UserList.css";
 const UserList = () => {
   const [term, setTerm] = useState<string>("");
   const debounceTerm = useDebounce(term, 300);
-  const users = useUsers(debounceTerm);
+  const [users, error] = useUsers(debounceTerm);
 
+  if (error) return <p>{error}</p>;
+  
   return (
     <>
       <input
