@@ -7,10 +7,8 @@ import "./UserList.css";
 const UserList = () => {
   const [term, setTerm] = useState<string>("");
   const debounceTerm = useDebounce(term, 300);
-  const [users, error] = useUsers(debounceTerm);
+  const [users, loading, error] = useUsers(debounceTerm);
 
-  if (error) return <p>{error}</p>;
-  
   return (
     <>
       <input
@@ -20,11 +18,15 @@ const UserList = () => {
         onChange={(e) => setTerm(e.target.value)}
         className="user-search"
       />
-      <section className="user-list">
-        {users.map((u) => (
-          <UserItem key={u.id} user={u}></UserItem>
-        ))}
-      </section>
+      {!loading && !error && (
+        <section className="user-list">
+          {users?.map((user) => (
+            <UserItem key={user.id} user={user}></UserItem>
+          ))}
+        </section>
+      )}
+      {!loading && error && <p>{error}</p>}
+      {loading && <p>Loading...</p>}
     </>
   );
 };
